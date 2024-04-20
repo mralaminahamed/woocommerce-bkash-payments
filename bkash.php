@@ -118,3 +118,5 @@ class WPSquad_BKashPayments {
 }
 
 new WPSquad_BKashPayments();
+
+// ref: https://github.com/kapilpaul/bKash-woocommerce
