@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WooCommerce bKash Payments
  * Plugin URI:  https://woocommerce.com/products/woocommerce-bkash-payments/
- * Description: bKash's Bangladeshi mobile payments processing solution.
+ * Description: A bKash payment gateway plugin for WooCommerce.
  * Version:     1.0
  * Author:      Al Amin Ahamed
  * Author URI:  https://alaminahamed.com/
@@ -120,3 +120,7 @@ class WPSquad_BKashPayments {
 new WPSquad_BKashPayments();
 
 // ref: https://github.com/kapilpaul/bKash-woocommerce
+// ref: https://github.com/bKash-developer/bKash-for-woocommerce
+// ref: https://github.com/bKash-developer/webhook-endpoint-php
+// ref: https://github.com/Codeinwp/otter-blocks
+
