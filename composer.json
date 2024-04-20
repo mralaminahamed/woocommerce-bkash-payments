@@ -1,0 +1,90 @@
+{
+    "name": "mralaminahamed/woocommerce-bkash-payments",
+    "description": "bKash payment gateway for WooCommerce",
+    "type": "wordpress-plugin",
+    "license": "GPL2",
+    "authors": [
+        {
+            "name": "Al Amin Ahamed",
+            "email": "me@alaminahamed.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.4",
+        "appsero/updater": "^1.0",
+        "appsero/client": "^2.0"
+    },
+    "require-dev": {
+        "wp-coding-standards/wpcs": "dev-develop",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+        "tareq1988/wp-php-cs-fixer": "dev-master",
+        "phpcompatibility/phpcompatibility-wp": "dev-master",
+        "phpunit/phpunit": "^9.6",
+        "wp-phpunit/wp-phpunit": "^6.3.0",
+        "yoast/phpunit-polyfills": "^1.0",
+        "coenjacobs/mozart": "^0.7.1"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "[ $COMPOSER_DEV_MODE -eq 0 ] || \"vendor/bin/mozart\" compose",
+            "composer dump-autoload"
+        ],
+        "post-update-cmd": [
+            "[ $COMPOSER_DEV_MODE -eq 0 ] || \"vendor/bin/mozart\" compose",
+            "composer dump-autoload"
+        ],
+        "phpcs": [
+            "vendor/bin/phpcs -p -s"
+        ],
+        "phpcs:report": [
+            "vendor/bin/phpcs --report-file='phpcs-report.txt'"
+        ],
+        "phpcbf": [
+            "vendor/bin/phpcbf -p"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "WPSquad\\BKashPayments\\": "includes/",
+            "WPSquad\\BKashPayments\\Dependencies\\": "dependencies/"
+        },
+        "files": []
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "WPSquad\\BKashPayments\\Test\\": "tests/phpunit/"
+        }
+    },
+    "extra": {
+        "mozart": {
+            "dep_namespace": "WPSquad\\BKashPayments\\Dependencies\\",
+            "dep_directory": "/dependencies/",
+            "classmap_directory": "/dependencies/classes/",
+            "classmap_prefix": "WPSquad_BKashPayments_",
+            "packages": [
+                "appsero/updater",
+                "appsero/client"
+            ],
+            "excluded_packages": [
+                "psr/container"
+            ],
+            "override_autoload": {
+                "google/apiclient": {
+                    "classmap": [
+                        "src/"
+                    ]
+                }
+            },
+            "delete_vendor_directories": true
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "7.4"
+        },
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

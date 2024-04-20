@@ -1,13 +1,23 @@
 <?php
-/*
-Plugin Name: bKash for WooCommerce
-Plugin URI: https://wordpress.org/plugins/woocommerce-bkash/
-Description: bKash payment gateway integration for WooCommerce
-Version: 1.1.1
-Author: Tareq Hasan
-Author URI: https://tareq.co
-License: GPL2
-*/
+/**
+ * Plugin Name: WooCommerce bKash Payments
+ * Plugin URI:  https://woocommerce.com/products/woocommerce-bkash-payments/
+ * Description: bKash's Bangladeshi mobile payments processing solution.
+ * Version:     1.0
+ * Author:      Al Amin Ahamed
+ * Author URI:  https://alaminahamed.com/
+ * License:     GPL-2.0
+ * Text Domain: woocommerce-bkash-payments
+ *
+ * Requires PHP: 7.2
+ * Requires Plugins: woocommerce
+ *
+ * WC requires at least: 3.9
+ * WC tested up to: 8.7
+ *
+ * @package     WPSquad\BKashPayments
+ * @category Payments
+ */
 
 // don't call the file directly
 if ( !defined( 'ABSPATH' ) ) exit;
@@ -15,9 +25,9 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * WooCommerce - bKash integration
  *
- * @author Tareq Hasan
+ * @author Al Amin Ahamed
  */
-class WeDevs_bKash {
+class WPSquad_BKashPayments {
 
     private $db_version = '1.0';
     private $version_key = '_bkash_version';
@@ -107,4 +117,6 @@ class WeDevs_bKash {
     }
 }
 
-new WeDevs_bKash();
+new WPSquad_BKashPayments();
+
+// ref: https://github.com/kapilpaul/bKash-woocommerce
