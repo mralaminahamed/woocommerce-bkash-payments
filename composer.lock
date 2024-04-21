@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ddb6b40f93410238aad14e2885f3f44",
+    "content-hash": "7ca56966fa925edd78bb8b17106182bb",
     "packages": [
         {
             "name": "appsero/client",

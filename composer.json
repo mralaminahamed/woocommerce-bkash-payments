@@ -1,6 +1,6 @@
 {
     "name": "mralaminahamed/woocommerce-bkash-payments",
-    "description": "bKash payment gateway for WooCommerce",
+    "description": "A bKash payment gateway plugin for WooCommerce.",
     "type": "wordpress-plugin",
     "license": "GPL2",
     "authors": [
@@ -46,22 +46,22 @@
     },
     "autoload": {
         "psr-4": {
-            "WPSquad\\BKashPayments\\": "includes/",
-            "WPSquad\\BKashPayments\\Dependencies\\": "dependencies/"
+            "BKashPayments\\": "includes/",
+            "BKashPayments\\Dependencies\\": "dependencies/"
         },
         "files": []
     },
     "autoload-dev": {
         "psr-4": {
-            "WPSquad\\BKashPayments\\Test\\": "tests/phpunit/"
+            "BKashPayments\\Test\\": "tests/phpunit/"
         }
     },
     "extra": {
         "mozart": {
-            "dep_namespace": "WPSquad\\BKashPayments\\Dependencies\\",
+            "dep_namespace": "BKashPayments\\Dependencies\\",
             "dep_directory": "/dependencies/",
             "classmap_directory": "/dependencies/classes/",
-            "classmap_prefix": "WPSquad_BKashPayments_",
+            "classmap_prefix": "BKashPayments_",
             "packages": [
                 "appsero/updater",
                 "appsero/client"

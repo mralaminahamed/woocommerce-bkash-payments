@@ -1,9 +1,9 @@
 <?php
 
-namespace WPSquad\BKashPayments\Dependencies\Appsero;
+namespace BKashPayments\Dependencies\Appsero;
 
 /**
- * WPSquad\BKashPayments\Dependencies\Appsero License Checker
+ * BKashPayments\Dependencies\Appsero License Checker
  *
  * This class will check, active and deactive license
  */
