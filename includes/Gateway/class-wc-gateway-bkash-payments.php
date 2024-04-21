@@ -3,7 +3,7 @@
 /**
  * bKash Payment gateway
  *
- * @author Tareq Hasan
+ * @author Al Amin Ahamed
  */
 class WC_Gateway_bKash_Payments extends WC_Payment_Gateway {
 

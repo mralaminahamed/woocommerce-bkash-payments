@@ -53,7 +53,7 @@ class BKashPayments {
     /**
      * Holds various class instances
      *
-     * @since 2.6.10
+     * @since 1.0
      *
      * @var array
      */
@@ -62,7 +62,7 @@ class BKashPayments {
     /**
      * Databse version key
      *
-     * @since 3.0.0
+     * @since 1.0
      *
      * @var string
      */
@@ -144,7 +144,7 @@ class BKashPayments {
             exit;
         }
 
-        $installer                   = new \WPSquad\BKashPayments\Install\Installer();
+        $installer                   = new \BKashPayments\Install\Installer();
         $installer->do_install();
 
         // // rewrite rules during activation
@@ -205,10 +205,6 @@ class BKashPayments {
         // // initialize the classes
         add_action( 'init', [ $this, 'init_classes' ], 4 );
         add_action( 'init', [ $this, 'wpdb_table_shortcuts' ], 1 );
-
-        // add_action( 'plugins_loaded', [ $this, 'after_plugins_loaded' ] );
-
-        add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), [ $this, 'plugin_action_links' ] );
     }
 
     /**
@@ -216,9 +212,7 @@ class BKashPayments {
      *
      * @return void
      */
-    public function init_classes() {
-
-    }
+    public function init_classes() {}
 
     /**
      * Flush rewrite rules after dokan is activated or woocommerce is activated
@@ -294,30 +288,6 @@ class BKashPayments {
         $wpdb->bkash_payments_transactions  = $wpdb->prefix . 'bkash_payments_transactions';
         $wpdb->bkash_payments_orders        = $wpdb->prefix . 'bkash_payments_orders';
         $wpdb->bkash_payments_refund        = $wpdb->prefix . 'bkash_payments_refund';
-    }
-
-    /**
-     * Plugin action links
-     *
-     * @param array $links
-     *
-     * @since  1.0
-     *
-     * @return array
-     */
-    public function plugin_action_links( $links ) {
-        $links[] = '<a href="' . admin_url( 'admin.php?page=bkash-payments#/settings' ) . '">' . __( 'Settings', 'woocommerce-bkash-payments' ) . '</a>';
-
-        return $links;
-    }
-
-    /**
-     * Initialize Appsero Tracker
-     *
-     * @return void
-     */
-    public function init_appsero_tracker() {
-        $this->container['tracker'] = new \BKashPayments\Tracker();
     }
 
     /**
@@ -398,9 +368,3 @@ function bkash_payments() { // phpcs:ignore
 
 // Lets Go....
 bkash_payments();
-
-// ref: https://github.com/kapilpaul/bKash-woocommerce
-// ref: https://github.com/bKash-developer/bKash-for-woocommerce
-// ref: https://github.com/bKash-developer/webhook-endpoint-php
-// ref: https://github.com/Codeinwp/otter-blocks
-
