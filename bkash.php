@@ -144,6 +144,7 @@ class BKashPayments {
             exit;
         }
 
+        require_once dirname( __FILE__ ) . '/includes/Install/Installer.php';
         $installer                   = new \BKashPayments\Install\Installer();
         $installer->do_install();
 
