@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name: WooCommerce bKash Payments
+ * Plugin Name: bKash Payments for WooCommerce
  * Plugin URI:  https://woocommerce.com/products/woocommerce-bkash-payments/
  * Description: A bKash payment gateway plugin for WooCommerce.
  * Version:     1.0
  * Author:      Al Amin Ahamed
  * Author URI:  https://alaminahamed.com/
  * License:     GPL-2.0
- * Text Domain: woocommerce-bkash-payments
+ * Text Domain: bkash-payments-for-woocommerce
  *
  * Requires at least: 6.4
  * Requires PHP: 7.2
@@ -16,7 +16,7 @@
  * WC requires at least: 3.9
  * WC tested up to: 8.8.2
  *
- * @package WPSquad\BKashPayments
+ * @package BKashPayments
  * @category Payments
  */
 
