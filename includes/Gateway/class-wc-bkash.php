@@ -6,7 +6,7 @@
 class WC_bKash {
 
     const base_url = 'https://www.bkashcluster.com:9081/dreamwave/merchant/trxcheck/sendmsg';
-    private $table = 'wc_bkash';
+    private $table = 'bkash_payments_transactions';
 
     function __construct() {
         add_action( 'wp_ajax_wc-bkash-confirm-trx', array($this, 'process_form') );
