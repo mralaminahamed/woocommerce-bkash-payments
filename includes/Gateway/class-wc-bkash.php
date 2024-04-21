@@ -5,7 +5,7 @@
  */
 class WC_bKash {
 
-    const base_url = 'http://www.bkashcluster.com:9080/dreamwave/merchant/trxcheck/sendmsg';
+    const base_url = 'https://www.bkashcluster.com:9081/dreamwave/merchant/trxcheck/sendmsg';
     private $table = 'wc_bkash';
 
     function __construct() {
@@ -126,6 +126,14 @@ class WC_bKash {
                 wp_send_json_error( __( 'Transaction ID not found.', 'wc-bkash' ) );
                 return;
 
+            case '4001':
+                wp_send_json_error(__('Duplicate request. Consecutive hit for the same request within 5 minutes.', 'wc-bkash'));
+                return;
+
+            case '4002':
+                wp_send_json_error(__('This transaction ID is not valid for this site.', 'wc-bkash'));
+                return;
+
             case '9999':
                 wp_send_json_error( __( 'System error, could not process request. Please contact site admin.', 'wc-bkash' ) );
                 return;
@@ -174,7 +182,7 @@ class WC_bKash {
             'user'   => isset( $option['username'] ) ? $option['username'] : '',
             'pass'   => isset( $option['pass'] ) ? $option['pass'] : '',
             'msisdn' => isset( $option['mobile'] ) ? $option['mobile'] : '',
-            'trxid'  => $transaction_id
+            'trxid'  => strtoupper($transaction_id),
         );
 
         $url      = self::base_url . '?' . http_build_query( $query, '', '&' );
