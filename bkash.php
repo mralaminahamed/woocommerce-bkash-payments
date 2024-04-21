@@ -9,13 +9,14 @@
  * License:     GPL-2.0
  * Text Domain: woocommerce-bkash-payments
  *
+ * Requires at least: 6.4
  * Requires PHP: 7.2
  * Requires Plugins: woocommerce
  *
  * WC requires at least: 3.9
- * WC tested up to: 8.7
+ * WC tested up to: 8.8.2
  *
- * @package     WPSquad\BKashPayments
+ * @package WPSquad\BKashPayments
  * @category Payments
  */
 
@@ -27,7 +28,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  *
  * @author Al Amin Ahamed
  */
-class WPSquad_BKashPayments {
+class BKashPayments {
     /**
      * Plugin version
      *
@@ -38,7 +39,7 @@ class WPSquad_BKashPayments {
     /**
      * Instance of self
      *
-     * @var WPSquad_BKashPayments
+     * @var BKashPayments
      */
     private static $instance = null;
 
@@ -71,7 +72,7 @@ class WPSquad_BKashPayments {
      * Kick off the plugin
      */
     public function __construct() {
-        register_activation_hook( __FILE__, array($this, 'install') );
+        register_activation_hook( __FILE__, array($this, 'activate') );
 
         // https://woocommerce.com/document/high-performance-order-storage/
         // https://developer.woocommerce.com/2022/01/17/the-plan-for-the-woocommerce-custom-order-table/
@@ -81,9 +82,9 @@ class WPSquad_BKashPayments {
     }
 
     /**
-     * Initializes the WPSquad_BKashPayments() class
+     * Initializes the BKashPayments() class
      *
-     * Checks for an existing WPSquad_BKashPayments() instance
+     * Checks for an existing BKashPayments() instance
      * and if it doesn't find one, create it.
      */
     public static function init() {
@@ -189,7 +190,7 @@ class WPSquad_BKashPayments {
         }
 
         require_once dirname( __FILE__ ) . '/includes/Gateway/class-wc-bkash.php';
-        require_once dirname( __FILE__ ) . '/includes/Gateway/class-wc-gateway-bkash.php';
+        require_once dirname( __FILE__ ) . '/includes/Gateway/class-wc-gateway-bkash-payments.php';
     }
 
     /**
@@ -216,7 +217,7 @@ class WPSquad_BKashPayments {
      * @return void
      */
     public function init_classes() {
-        
+
     }
 
     /**
@@ -267,7 +268,7 @@ class WPSquad_BKashPayments {
     /**
      * Define constant if not already defined
      *
-     * @since 2.9.16
+     * @since 1.0
      *
      * @param string      $name
      * @param string|bool $value
@@ -300,13 +301,12 @@ class WPSquad_BKashPayments {
      *
      * @param array $links
      *
-     * @since  2.4
+     * @since  1.0
      *
      * @return array
      */
     public function plugin_action_links( $links ) {
-        $links[] = '<a href="' . admin_url( 'admin.php?page=dokan#/settings' ) . '">' . __( 'Settings', 'dokan-lite' ) . '</a>';
-        $links[] = '<a href="https://dokan.co/docs/wordpress/" target="_blank">' . __( 'Documentation', 'dokan-lite' ) . '</a>';
+        $links[] = '<a href="' . admin_url( 'admin.php?page=bkash-payments#/settings' ) . '">' . __( 'Settings', 'woocommerce-bkash-payments' ) . '</a>';
 
         return $links;
     }
@@ -317,7 +317,7 @@ class WPSquad_BKashPayments {
      * @return void
      */
     public function init_appsero_tracker() {
-        $this->container['tracker'] = new \WeDevs\Dokan\Tracker();
+        $this->container['tracker'] = new \BKashPayments\Tracker();
     }
 
     /**
@@ -371,56 +371,9 @@ class WPSquad_BKashPayments {
      * @return array
      */
     function register_gateway( $gateways ) {
-        $gateways[] = 'WC_Gateway_bKash';
+        $gateways[] = 'WC_Gateway_bKash_Payments';
 
         return $gateways;
-    }
-
-    /**
-     * Create the transaction table
-     *
-     * @return void
-     */
-    function install() {
-        global $wpdb;
-
-        $query = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}wc_bkash` (
-            `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-            `trxId` int(11) DEFAULT NULL,
-            `sender` varchar(15) DEFAULT NULL,
-            `ref` varchar(100) DEFAULT NULL,
-            `amount` varchar(10) DEFAULT NULL,
-            PRIMARY KEY (`id`),
-            KEY `trxId` (`trxId`)
-          ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
-
-        $wpdb->query( $query );
-
-        $this->plugin_upgrades();
-
-        update_option( $this->version_key, $this->db_version );
-    }
-
-    /**
-     * Do plugin upgrade tasks
-     *
-     * @return void
-     */
-    private function plugin_upgrades() {
-        global $wpdb;
-
-        $version = get_option( $this->version_key, '0.1' );
-
-        if ( version_compare( $this->db_version, $version, '<=' ) ) {
-            return;
-        }
-
-        switch ( $version ) {
-            case '0.1':
-                $sql = "ALTER TABLE `{$wpdb->prefix}wc_bkash` CHANGE `trxId` `trxId` BIGINT(20) NULL DEFAULT NULL;";
-                $wpdb->query( $sql );
-                break;
-        }
     }
 
     /**
@@ -437,10 +390,10 @@ class WPSquad_BKashPayments {
 /**
  * Load BKash_payments Plugin when all plugins loaded
  *
- * @return WPSquad_BKashPayments
+ * @return BKashPayments
  */
 function bkash_payments() { // phpcs:ignore
-    return WPSquad_BKashPayments::init();
+    return BKashPayments::init();
 }
 
 // Lets Go....

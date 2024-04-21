@@ -1,9 +1,9 @@
 <?php
 
-namespace WPSquad\BKashPayments\Dependencies\Appsero;
+namespace BKashPayments\Dependencies\Appsero;
 
 /**
- * WPSquad\BKashPayments\Dependencies\Appsero Insights
+ * BKashPayments\Dependencies\Appsero Insights
  *
  * This is a tracker class to track plugin usage based on if the customer has opted in.
  * No personal information is being tracked by this class, only general settings, active plugins, environment details
@@ -57,7 +57,7 @@ class Insights
             $client = new Client($client, $name, $file);
         }
 
-        if (is_object($client) && is_a($client, 'WPSquad\BKashPayments\Dependencies\Appsero\Client')) {
+        if (is_object($client) && is_a($client, 'BKashPayments\Dependencies\Appsero\Client')) {
             $this->client = $client;
         }
     }
@@ -464,7 +464,7 @@ class Insights
 
         $notice .= ' (<a class="' . $this->client->slug . '-insights-data-we-collect" href="#">' . $this->client->__trans('what we collect') . '</a>)';
         $notice .= '<p class="description" style="display:none;">' . implode(', ', $this->data_we_collect()) . '. ';
-        $notice .= 'We are using WPSquad\BKashPayments\Dependencies\Appsero to collect your data. <a href="' . $policy_url . '" target="_blank">Learn more</a> about how WPSquad\BKashPayments\Dependencies\Appsero collects and handle your data.</p>';
+        $notice .= 'We are using BKashPayments\Dependencies\Appsero to collect your data. <a href="' . $policy_url . '" target="_blank">Learn more</a> about how BKashPayments\Dependencies\Appsero collects and handle your data.</p>';
 
         echo '<div class="updated"><p>';
         echo $notice;
@@ -927,7 +927,7 @@ class Insights
                     <p class="wd-dr-modal-reasons-bottom">
                         <?php
                         echo sprintf(
-                            $this->client->__trans('We share your data with <a href="%1$s" target="_blank">Appsero</a> to troubleshoot problems &amp; make product improvements. <a href="%2$s" target="_blank">Learn more</a> about how WPSquad\BKashPayments\Dependencies\Appsero handles your data.'),
+                            $this->client->__trans('We share your data with <a href="%1$s" target="_blank">Appsero</a> to troubleshoot problems &amp; make product improvements. <a href="%2$s" target="_blank">Learn more</a> about how BKashPayments\Dependencies\Appsero handles your data.'),
                             esc_url('https://appsero.com/'),
                             esc_url('https://appsero.com/privacy-policy')
                         );

@@ -1,9 +1,9 @@
-=== WooCommerce bKash ===
-Contributors: tareq1988
-Donate link: http://tareq.wedevs.com/donate/
+=== WooCommerce bKash Payments ===
+Contributors: mralaminahamed
+Donate link: https://alaminahamed.com/
 Tags: bkash, gateway, woocommerce, bdt, bangladesh
-Requires at least: 3.6
-Tested up to: 4.6.1
+Requires at least: 3.9
+Tested up to: 6.5.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -60,12 +60,12 @@ Its time to take your bKash <strong>Merchant API Access</strong> Username and Pa
 
 = Contribute =
 
-[Fork in Github](https://github.com/tareq1988/woocommerce-bkash)
+[Fork in Github](https://github.com/mralaminahamed/woocommerce-bkash-payments)
 
 
 = Author =
 
-Brought to you by [Tareq Hasan](https://tareq.co) from [weDevs](http://wedevs.com)
+Brought to you by [Al Amin Ahamed](https://alaminahamed.com)
 
 == Installation ==
 
@@ -86,18 +86,7 @@ Nothing here yet
 
 == Changelog ==
 
-= 1.1.1 (24 Oct, 2016) =
-
- * [fix] Fix the order received page form display
-
-= 1.1.0 (20 July, 2016) =
-
- * [fix] WooCommerce 3.6 compatibility. Settings screen was broken.
-
 = 1.0 =
-* Moved the transaction ID form to order received page and order details page.
-
-= 0.1 =
 * First release
 
 == Upgrade Notice ==

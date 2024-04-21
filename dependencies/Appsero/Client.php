@@ -1,9 +1,9 @@
 <?php
 
-namespace WPSquad\BKashPayments\Dependencies\Appsero;
+namespace BKashPayments\Dependencies\Appsero;
 
 /**
- * WPSquad\BKashPayments\Dependencies\Appsero Client
+ * BKashPayments\Dependencies\Appsero Client
  *
  * This class is necessary to set project data
  */
@@ -110,7 +110,7 @@ class Client {
     /**
      * Initialize insights class
      *
-     * @return WPSquad\BKashPayments\Dependencies\Appsero\Insights
+     * @return BKashPayments\Dependencies\Appsero\Insights
      */
     public function insights() {
         if ( ! class_exists( __NAMESPACE__ . '\Insights' ) ) {
@@ -139,18 +139,18 @@ class Client {
         }
 
         // show deprecated notice
-        _deprecated_function( __CLASS__ . '::updater', '2.0', '\WPSquad\BKashPayments\Dependencies\Appsero\Updater::init($client);, for more details please visit: https://appsero.com/docs/appsero-developers-guide/appsero-client/appsero-sdk-updater-changes/' );
+        _deprecated_function( __CLASS__ . '::updater', '2.0', '\BKashPayments\Dependencies\Appsero\Updater::init($client);, for more details please visit: https://appsero.com/docs/appsero-developers-guide/appsero-client/appsero-sdk-updater-changes/' );
 
         // initialize the new updater
-        if ( method_exists( '\WPSquad\BKashPayments\Dependencies\Appsero\Updater', 'init' ) ) {
-            \WPSquad\BKashPayments\Dependencies\Appsero\Updater::init( $this );
+        if ( method_exists( '\BKashPayments\Dependencies\Appsero\Updater', 'init' ) ) {
+            \BKashPayments\Dependencies\Appsero\Updater::init( $this );
         }
     }
 
     /**
      * Initialize license checker
      *
-     * @return WPSquad\BKashPayments\Dependencies\Appsero\License
+     * @return BKashPayments\Dependencies\Appsero\License
      */
     public function license() {
         if ( ! class_exists( __NAMESPACE__ . '\License' ) ) {

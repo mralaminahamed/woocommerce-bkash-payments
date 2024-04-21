@@ -5,7 +5,7 @@
  *
  * @author Tareq Hasan
  */
-class WC_Gateway_bKash extends WC_Payment_Gateway {
+class WC_Gateway_bKash_Payments extends WC_Payment_Gateway {
 
     /**
      * Initialize the gateway

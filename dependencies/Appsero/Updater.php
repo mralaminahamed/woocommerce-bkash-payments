@@ -1,18 +1,18 @@
 <?php
 
-namespace WPSquad\BKashPayments\Dependencies\Appsero;
+namespace BKashPayments\Dependencies\Appsero;
 
 use stdClass;
 
 /**
- * WPSquad\BKashPayments\Dependencies\Appsero Updater
+ * BKashPayments\Dependencies\Appsero Updater
  *
  * This class will show new updates project
  */
 class Updater {
 
 	/**
-	 * WPSquad\BKashPayments\Dependencies\Appsero\Client
+	 * BKashPayments\Dependencies\Appsero\Client
 	 *
 	 * @var object
 	 */
@@ -163,7 +163,7 @@ class Updater {
 	}
 
 	/**
-	 * Get plugin info from WPSquad\BKashPayments\Dependencies\Appsero
+	 * Get plugin info from BKashPayments\Dependencies\Appsero
 	 */
 	private function get_project_latest_version() {
 		$license = $this->client->license()->get_license();
